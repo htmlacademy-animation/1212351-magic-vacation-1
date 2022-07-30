@@ -2,17 +2,9 @@
   position: relative;
 
   &:hover {
-    &__list {
+    .social-block__list {
       opacity: 1;
       pointer-events: auto;
-    }
-
-    li:nth-of-type(2) .social-block__link {
-      transition-delay: 100ms;
-    }
-
-    li:last-of-type .social-block__link {
-      transition-delay: 200ms;
     }
 
     .social-block__link {
@@ -184,6 +176,14 @@
   border-radius: 50%;
   transition: color .3s ease-in-out, opacity .3s ease-in-out;
   opacity: 0;
+
+  &:nth-child(2) {
+    transition-delay: 100ms;
+  }
+
+  &:last-child {
+    transition-delay: 200ms;
+  }
 
   @media (min-width: $stop-scaling) {
     width: 40px;

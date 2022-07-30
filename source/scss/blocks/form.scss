@@ -34,8 +34,7 @@
   margin-right: 3rem;
   padding: 0 5.6rem;
   height: 6rem;
-  margin-left: auto;
-  width: 40px;
+  width: calc(100% - 21rem);
   text-transform: uppercase;
   font: inherit;
   font-size: 2.4rem;
@@ -44,10 +43,7 @@
   border: 0;
   border-radius: 3rem;
   outline: none;
-  animation-name: scaleWidthFromRight;
-  animation-duration: 1s;
-  animation-delay: .3s;
-  animation-fill-mode: forwards;
+
   &:focus {
     border: 1px solid $c-purple;
   }
