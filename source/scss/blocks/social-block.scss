@@ -2,9 +2,21 @@
   position: relative;
 
   &:hover {
-    .social-block__list {
+    &__list {
       opacity: 1;
       pointer-events: auto;
+    }
+
+    li:nth-of-type(2) .social-block__link {
+      transition-delay: 100ms;
+    }
+
+    li:last-of-type .social-block__link {
+      transition-delay: 200ms;
+    }
+
+    .social-block__link {
+      opacity: 1;
     }
   }
 }
@@ -17,6 +29,7 @@
   height: 4rem;
   color: $c-dark;
   border-radius: 50%;
+  transition: .3s color ease-in-out;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     display: none;
@@ -35,6 +48,7 @@
     background-color: $c-light;
     border: 2px solid $c-light;
     z-index: -1;
+    transition: .3s width, .3s height;
   }
 
   svg {
@@ -87,8 +101,8 @@
   top: 100%;
   right: 0;
   margin-top: 1.5rem;
-  opacity: 0;
   pointer-events: none;
+  transition: .3s opacity ease-in-out;
 
   @media (min-width: $stop-scaling) {
     margin-top: 15px;
@@ -168,6 +182,8 @@
   color: $c-light;
   border: 2px solid transparent;
   border-radius: 50%;
+  transition: color .3s ease-in-out, opacity .3s ease-in-out;
+  opacity: 0;
 
   @media (min-width: $stop-scaling) {
     width: 40px;

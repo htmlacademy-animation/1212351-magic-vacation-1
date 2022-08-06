@@ -90,13 +90,30 @@
   }
 }
 
+.swiper-slide-active .slider__item-text,
+.swiper-slide-next .slider__item-text {
+  animation-name: fadeInWithXOTransform;
+  animation-fill-mode: forwards;
+  animation-duration: .4s;
+  animation-timing-function: ease-in;
+}
+
+.swiper-slide-active .slider__item-text {
+  animation-delay: .3s;
+}
+
+.swiper-slide-next .slider__item-text {
+  animation-delay: .6s;
+}
+
+
 .slider__item-text {
   margin-top: 3.6rem;
   margin-bottom: 0;
   max-width: 34rem;
   font-size: 1.8rem;
   line-height: 2rem;
-
+  opacity: 0;
   @media (min-width: $stop-scaling) {
     margin-top: 36px;
     max-width: 340px;
