@@ -35,6 +35,7 @@
   padding: 1rem 0;
   width: 10rem;
   color: $c-light;
+  opacity: 0;
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -128,8 +129,8 @@
 }
 
 .page-header__nav {
-  display: flex;
   align-items: center;
+  display: none;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     position: fixed;

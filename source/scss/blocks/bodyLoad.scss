@@ -1,0 +1,14 @@
+body.load {
+  .page-header__logo {
+    animation: fadeInWithXOTransformReverse .4s ease-in forwards;
+  }
+
+  .page-header__nav {
+    display: flex;
+    animation: fadeInWithXOTransform .4s ease-in forwards;
+  }
+
+  .screen__footer {
+    animation: fadeInWithYOTransform .4s ease-in forwards;
+  }
+}
