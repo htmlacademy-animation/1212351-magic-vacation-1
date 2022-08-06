@@ -3,9 +3,7 @@
 export const switchLoadClass = (type, selectorList, className) => {
   selectorList.forEach((selector) => {
     const nodeElement = document.querySelector(selector);
-    if (type === `add`) {
-      nodeElement.classList[type](className);
-    }
+    nodeElement.classList[type](className);
   });
 };
 
