@@ -1,3 +1,9 @@
+@keyframes simpleHide {
+  to {
+    display: none;
+  }
+}
+
 @keyframes fadeInWithXOTransform  {
   from {
     opacity: 0;

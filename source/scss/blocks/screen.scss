@@ -300,10 +300,30 @@
     background-size: auto calc(100vh - 13.8rem), 100% 25rem;
     background-position: top center, bottom center;
   }
+
+  &.screen--hidden {
+    display: flex;
+    animation: simpleHide 0 .4s;
+  }
 }
 
 .screen--prizes {
+  position: fixed;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 100vh;
   background-color: $c-dark;
+  transform: translateY(0vh);
+  transition: top .4s ease-in;
+
+  &.active {
+    top: 0;
+  }
+
+  &.screen--hidden {
+    display: flex;
+  }
 }
 
 .screen--game {
