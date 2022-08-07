@@ -36,6 +36,7 @@
   width: 10rem;
   color: $c-light;
 
+
   @media (min-width: $stop-scaling) {
     top: -5px;
     padding: 10px 0;
@@ -81,6 +82,8 @@
   background-color: $c-light;
   border-radius: 50%;
   z-index: 1;
+  transform: scale(0);
+  transition: transform .4s cubic-bezier(0.34, 1.56, 0.64, 1);
 
   @media (max-width: $tablet) and (orientation: portrait) {
     display: block;
@@ -88,6 +91,7 @@
 
   @media (max-width: $mobile) and (orientation: landscape) {
     display: block;
+    transform: scale(1);
   }
 
   &::before,
@@ -128,8 +132,8 @@
 }
 
 .page-header__nav {
-  display: flex;
   align-items: center;
+  display: flex;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     position: fixed;
@@ -271,7 +275,7 @@
     //    display: block;
     //  }
     //}
-
+    &.active,
     &:hover,
     &:focus {
       color: $c-purple;
@@ -281,6 +285,14 @@
         opacity: 1;
         background-color: $c-purple;
         right: 0;
+      }
+    }
+
+    &.active {
+      color: #fff;
+
+      &::after {
+        background-color: #fff;
       }
     }
   }
