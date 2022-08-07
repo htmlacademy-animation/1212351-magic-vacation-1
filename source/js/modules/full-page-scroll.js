@@ -1,5 +1,9 @@
 import throttle from 'lodash/throttle';
 
+const HIDDEN_SCREEN_CLASS = `screen--hidden`;
+const ACTIVE_SCREEN_CLASS = `active`;
+const PREV_ACTIVE_SCREEN_CLASS = `prev-active`;
+
 export default class FullPageScroll {
   constructor() {
     this.THROTTLE_TIMEOUT = 1000;
@@ -12,6 +16,7 @@ export default class FullPageScroll {
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
     this.onUrlHashChengedHandler = this.onUrlHashChanged.bind(this);
+    this.prevActiveScreen = null;
   }
 
   init() {
@@ -52,13 +57,27 @@ export default class FullPageScroll {
   }
 
   changeVisibilityDisplay() {
+    const screenArr = [...this.screenElements];
+    const prevScreen = screenArr.find((screen) => screen.classList.contains(PREV_ACTIVE_SCREEN_CLASS));
+    const activeScreen = screenArr.find((screen) => screen.classList.contains(ACTIVE_SCREEN_CLASS)) || screenArr[0];
+    const nextScreen = screenArr[this.activeScreen];
+
+    nextScreen.classList.remove(HIDDEN_SCREEN_CLASS);
+
     this.screenElements.forEach((screen) => {
-      screen.classList.add(`screen--hidden`);
-      screen.classList.remove(`active`);
+      if (screen === nextScreen) return;
+      screen.classList.add(HIDDEN_SCREEN_CLASS);
     });
-    this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
+
+    activeScreen.classList.add(PREV_ACTIVE_SCREEN_CLASS);
+    activeScreen.classList.remove(ACTIVE_SCREEN_CLASS);
+
+    if (prevScreen) {
+      prevScreen.classList.remove(PREV_ACTIVE_SCREEN_CLASS);
+    }
+
     setTimeout(() => {
-      this.screenElements[this.activeScreen].classList.add(`active`);
+      nextScreen.classList.add(ACTIVE_SCREEN_CLASS);
     }, 100);
   }
 

@@ -307,18 +307,31 @@
   }
 }
 
+.prev-active + .screen--prizes.active {
+  animation: showFromBottom .4s forwards;
+
+  .screen__wrapper {
+    transition: opacity .3s .6s;
+  }
+}
+
 .screen--prizes {
   position: fixed;
-  top: 100%;
   left: 0;
   right: 0;
-  height: 100vh;
+  top: 100%;
   background-color: $c-dark;
-  transform: translateY(0vh);
-  transition: top .4s ease-in;
+
+  .screen__wrapper {
+    opacity: 0;
+  }
 
   &.active {
     top: 0;
+  }
+
+  &.active .screen__wrapper {
+    opacity: 1;
   }
 
   &.screen--hidden {
