@@ -10424,6 +10424,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_throttle__WEBPACK_IMPORTED_MODULE_0__);
 
 
+const HIDDEN_SCREEN_CLASS = `screen--hidden`;
+const ACTIVE_SCREEN_CLASS = `active`;
+const PREV_ACTIVE_SCREEN_CLASS = `prev-active`;
+
 class FullPageScroll {
   constructor() {
     this.THROTTLE_TIMEOUT = 1000;
@@ -10436,6 +10440,7 @@ class FullPageScroll {
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
     this.onUrlHashChengedHandler = this.onUrlHashChanged.bind(this);
+    this.prevActiveScreen = null;
   }
 
   init() {
@@ -10476,13 +10481,27 @@ class FullPageScroll {
   }
 
   changeVisibilityDisplay() {
+    const screenArr = [...this.screenElements];
+    const prevScreen = screenArr.find((screen) => screen.classList.contains(PREV_ACTIVE_SCREEN_CLASS));
+    const activeScreen = screenArr.find((screen) => screen.classList.contains(ACTIVE_SCREEN_CLASS)) || screenArr[0];
+    const nextScreen = screenArr[this.activeScreen];
+
+    nextScreen.classList.remove(HIDDEN_SCREEN_CLASS);
+
     this.screenElements.forEach((screen) => {
-      screen.classList.add(`screen--hidden`);
-      screen.classList.remove(`active`);
+      if (screen === nextScreen) return;
+      screen.classList.add(HIDDEN_SCREEN_CLASS);
     });
-    this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
+
+    activeScreen.classList.add(PREV_ACTIVE_SCREEN_CLASS);
+    activeScreen.classList.remove(ACTIVE_SCREEN_CLASS);
+
+    if (prevScreen) {
+      prevScreen.classList.remove(PREV_ACTIVE_SCREEN_CLASS);
+    }
+
     setTimeout(() => {
-      this.screenElements[this.activeScreen].classList.add(`active`);
+      nextScreen.classList.add(ACTIVE_SCREEN_CLASS);
     }, 100);
   }
 
@@ -10527,6 +10546,8 @@ class FullPageScroll {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+
+
 /* harmony default export */ __webpack_exports__["default"] = (() => {
   let header = document.querySelector(`.js-header`);
   let menuToggler = document.querySelector(`.js-menu-toggler`);
