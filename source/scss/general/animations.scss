@@ -1,3 +1,20 @@
+@keyframes showFromBottom {
+  from {
+    top: 100%;
+  }
+
+  to {
+    top: 0%;
+  }
+}
+
+
+@keyframes simpleHide {
+  to {
+    display: none;
+  }
+}
+
 @keyframes fadeInWithXOTransform  {
   from {
     opacity: 0;

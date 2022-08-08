@@ -300,10 +300,43 @@
     background-size: auto calc(100vh - 13.8rem), 100% 25rem;
     background-position: top center, bottom center;
   }
+
+  &.screen--hidden {
+    display: flex;
+    animation: simpleHide 0 .4s;
+  }
+}
+
+.prev-active + .screen--prizes.active {
+  animation: showFromBottom .4s forwards;
+
+  .screen__wrapper {
+    transition: opacity .3s .6s;
+  }
 }
 
 .screen--prizes {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 100%;
   background-color: $c-dark;
+
+  .screen__wrapper {
+    opacity: 0;
+  }
+
+  &.active {
+    top: 0;
+  }
+
+  &.active .screen__wrapper {
+    opacity: 1;
+  }
+
+  &.screen--hidden {
+    display: flex;
+  }
 }
 
 .screen--game {
