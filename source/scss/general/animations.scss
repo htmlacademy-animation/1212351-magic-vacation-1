@@ -8,6 +8,32 @@
   }
 }
 
+@keyframes wonderScale {
+  0% {
+    transform: scale(0);
+  }
+
+  20% {
+    transform: scale(1);
+  }
+
+
+  40% {
+    transform: scale(0);
+  }
+
+  60% {
+    transform: scale(1);
+  }
+
+  80% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
 
 @keyframes simpleHide {
   to {
@@ -86,5 +112,15 @@
 
   to {
     width: calc(100% - 21rem);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
   }
 }

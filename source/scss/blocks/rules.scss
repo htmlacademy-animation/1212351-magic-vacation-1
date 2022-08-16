@@ -117,6 +117,33 @@
   }
 }
 
+.screen--rules.active {
+  .rules__item::after {
+    transform: scale(1);
+  }
+
+  .rules__item::before {
+    opacity: 1;
+  }
+
+  p {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+
+  .rules__link {
+    max-width: 40rem;
+    transition: max-width .8s .8s, opacity 0s .6s, color .4s 1s;
+    opacity: 1;
+  }
+}
+
+.screen--rules:not(.active) {
+  .rules__link {
+    color: transparent;
+  }
+}
+
 .rules__item {
   position: relative;
   margin: 0 0 6.2rem;
@@ -144,6 +171,53 @@
     font-size: 1.2rem;
   }
 
+  &:first-of-type p,
+  &:first-of-type::before {
+    transition-delay: .2s;
+  }
+
+  &:nth-of-type(2)::after{
+    transition-delay: .1s;
+  }
+
+  &:nth-of-type(2) p,
+  &:nth-of-type(2)::before {
+    transition-delay: .3s;
+  }
+
+  &:nth-of-type(3)::after {
+    transition-delay: .2s;
+  }
+
+  &:nth-of-type(3) p,
+  &:nth-of-type(3)::before {
+    transition-delay: .4s;
+  }
+
+  &:last-of-type::after {
+    transition-delay: .3s;
+  }
+
+  &:last-of-type p,
+  &:last-of-type::before {
+    transition-delay: .5s;
+  }
+
+
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4.5rem;
+    height: 4.5rem;
+    background-color: $c-purple;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform .5s cubic-bezier(0.34, 1.56, 0.64, 1) ;
+  }
+
   &::before {
     content: counter(li);
     counter-increment: li;
@@ -155,10 +229,12 @@
     font-family: $font-alt;
     font-weight: 400;
     font-size: 2.4rem;
-    background-color: $c-purple;
-    border-radius: 50%;
     line-height: 5rem;
+    text-transform: none;
     text-align: center;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity .5s cubic-bezier(0.34, 1.56, 0.64, 1);
 
     @media (max-width: $tablet) and (orientation: portrait) {
       top: 1rem;
@@ -179,6 +255,9 @@
 
   p {
     margin: 0;
+    transform: translate3d(20px, 0, 0);
+    opacity: 0;
+    transition: transform .5s, opacity .6s;
 
     @media (max-width: $tablet) and (orientation: portrait) {
       min-height: calc(1.4rem * 2.2);
@@ -190,6 +269,8 @@
   position: absolute;
   bottom: 6rem;
   right: 5.6rem;
+  max-width: 5rem;
+  opacity: 0;
 
   @media (min-width: $stop-scaling) {
     bottom: 60px;
